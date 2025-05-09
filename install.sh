@@ -12,7 +12,7 @@ CLONED_DIR="$HOME/dwm-setup"
 CONFIG_DIR="$HOME/.config/suckless"
 INSTALL_DIR="$HOME/installation"
 GTK_THEME="https://github.com/vinceliuice/Orchis-theme.git"
-ICON_THEME="https://github.com/vinceliuice/Colloid-icon-theme.git"
+ICON_THEME="https://github.com/vinceliuice/Tela-icon-theme.git"
 
 command_exists() {
     command -v "$1" &>/dev/null
@@ -63,7 +63,7 @@ trap cleanup EXIT
 # ============================================
 install_packages() {
     echo "Installing required packages..."
-    sudo apt-get install -y xorg xorg-dev xbacklight xbindkeys xvkbd xinput build-essential sxhkd network-manager-gnome pamixer thunar thunar-archive-plugin thunar-volman nala lxappearance dialog mtools avahi-daemon acpi acpid gvfs-backends xfce4-power-manager pavucontrol pamixer pulsemixer feh fonts-recommended fonts-font-awesome fonts-terminus exa flameshot qimgv rofi dunst libnotify-bin xdotool libnotify-dev firefox-esr suckless-tools redshift geany geany-plugin-addons geany-plugin-git-changebar geany-plugin-spellcheck geany-plugin-treebrowser geany-plugin-markdown geany-plugin-insertnum geany-plugin-lineoperations geany-plugin-automark pipewire-audio unzip ranger micro xdg-user-dirs-gtk tilix lightdm || echo "Warning: Package installation failed."
+    sudo apt-get install -y xorg xorg-dev xbacklight xbindkeys xvkbd xinput build-essential sxhkd network-manager-gnome pamixer thunar thunar-archive-plugin thunar-volman nala lxappearance dialog mtools avahi-daemon acpi acpid gvfs-backends xfce4-power-manager pavucontrol pamixer pulsemixer feh fonts-recommended fonts-font-awesome fonts-terminus exa flameshot qimgv rofi dunst libnotify-bin xdotool libnotify-dev firefox-esr suckless-tools redshift pipewire-audio unzip ranger micro xdg-user-dirs-gtk tilix lightdm || echo "Warning: Package installation failed."
     echo "Package installation completed."
   } 
  
@@ -258,7 +258,7 @@ install_fonts() {
 # ============================================
 install_theming() {
     GTK_THEME_NAME="Orchis-Grey-Dark"
-    ICON_THEME_NAME="Colloid-Grey-Dracula-Dark"
+    ICON_THEME_NAME="Tela-Grey-Dracula-Dark"
 
     if [ -d "$HOME/.themes/$GTK_THEME_NAME" ] || [ -d "$HOME/.icons/$ICON_THEME_NAME" ]; then
         echo "One or more themes/icons already installed. Skipping theming installation."
@@ -273,8 +273,8 @@ install_theming() {
     yes | ./install.sh -c dark -t default grey teal orange --tweaks black
 
     # Icon Theme Installation
-    git clone "$ICON_THEME" "$INSTALL_DIR/Colloid-icon-theme" || die "Failed to clone Colloid icon theme."
-    cd "$INSTALL_DIR/Colloid-icon-theme" || die "Failed to enter Colloid icon theme directory."
+    git clone "$ICON_THEME" "$INSTALL_DIR/Tela-icon-theme" || die "Failed to clone Tela icon theme."
+    cd "$INSTALL_DIR/Tela-icon-theme" || die "Failed to enter Tela icon theme directory."
     ./install.sh -t teal orange grey default -s default gruvbox everforest dracula
 
     echo "Theming installation complete."
@@ -293,7 +293,7 @@ mkdir -p ~/.config/gtk-3.0
 cat << EOF > ~/.config/gtk-3.0/settings.ini
 [Settings]
 gtk-theme-name=Orchis-Grey-Dark
-gtk-icon-theme-name=Colloid-Grey-Dracula-Dark
+gtk-icon-theme-name=Tela-Grey-Dracula-Dark
 gtk-font-name=Sans 10
 gtk-cursor-theme-name=Adwaita
 gtk-cursor-theme-size=0
@@ -311,7 +311,7 @@ EOF
 # Write to ~/.gtkrc-2.0
 cat << EOF > ~/.gtkrc-2.0
 gtk-theme-name="Orchis-Grey-Dark"
-gtk-icon-theme-name="Colloid-Grey-Dracula-Dark"
+gtk-icon-theme-name="Tela-Grey-Dracula-Dark"
 gtk-font-name="Sans 10"
 gtk-cursor-theme-name="Adwaita"
 gtk-cursor-theme-size=0
